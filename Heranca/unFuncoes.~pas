@@ -46,17 +46,14 @@ begin
     Exit;
 
   try
-    with DM.qryGeral, SQL do
-      begin
-        Close;
-        Clear;
-        Add('SELECT ' + desc + ' FROM '+tabela);
-        Add('WHERE codigo = :cod');
-        ParamByName('cod').AsInteger := StrToInt(codigo);
-        Open;
-      end;
+    DM.qryGeral.Close;
+    DM.qryGeral.SQL.Clear;
+    DM.qryGeral.SQL.Add('SELECT ' + desc + ' FROM '+tabela);
+    DM.qryGeral.SQL.Add('WHERE codigo = :cod');
+    DM.qryGeral.SQL.ParamByName('cod').AsInteger := StrToInt(codigo);
+    DM.qryGeral.Open;
   except
-
+    // colocar mensagem de erro
   end;
 
   DM.cdsGeral.Open;
@@ -111,27 +108,27 @@ var Texto,Milhar,Centena,Centavos,msg: string;
       Dezena:='';
       Centena:='';
       if (trio[2]='1') and (trio[3]<>'0') then
-        begin
-          Unidade:=Dez[strtoint(trio[3])];
-          Dezena:='';
-        end
+      begin
+        Unidade:=Dez[strtoint(trio[3])];
+        Dezena:='';
+      end
       else
-        begin
-          if trio[2]<>'0' then Dezena:=Dezenas[strtoint(trio[2])];
-          if trio[3]<>'0' then Unidade:=Unidades[strtoint(trio[3])];
+      begin
+        if trio[2]<>'0' then Dezena:=Dezenas[strtoint(trio[2])];
+        if trio[3]<>'0' then Unidade:=Unidades[strtoint(trio[3])];
       end;
       if (trio[1]='1') and (Unidade='') and (Dezena='') then
         Centena:='Cem'
       else
-        if trio[1]<>'0' then
-          Centena:=Centenas[strtoint(trio[1])]
-        else Centena:='';
+      if trio[1]<>'0' then
+        Centena:=Centenas[strtoint(trio[1])]
+      else Centena:='';
       Result:= Centena + ifs((Centena<>'') and ((Dezena<>'') or (Unidade<>'')), ' e ', '')
       + Dezena + ifs((Dezena<>'') and (Unidade<>''),' e ', '') + Unidade;
   end;
 
 begin
-  if (valor>999999.99) or (valor<0) then
+    if (valor>999999.99) or (valor<0) then
     begin
       msg:='O valor está fora do intervalo permitido.';
       msg:=msg+'O número deve ser maior ou igual a zero e menor que 999.999,99.';
@@ -140,7 +137,8 @@ begin
       Result:='';
       exit;
     end;
-  if valor=0 then
+
+    if valor=0 then
     begin
       Result:='';
       Exit;
@@ -211,7 +209,6 @@ begin
 
   DM.qryGeral.ParamByName('usu').AsInteger := frmPrincipal.iCodUsuario;
 
-  DM.qryGeral.SQL.SaveToFile('c:\Permissao.txt');
   DM.qryGeral.Open;
   DM.cdsGeral.Close;
   DM.cdsGeral.Open;

@@ -27,7 +27,6 @@ object frmCadastros: TfrmCadastros
     Height = 40
     Align = alTop
     TabOrder = 0
-    ExplicitWidth = 507
   end
   object PnDados: TPanel
     Left = 0
@@ -51,8 +50,6 @@ object frmCadastros: TfrmCadastros
     Height = 49
     Align = alTop
     TabOrder = 2
-    ExplicitTop = 385
-    ExplicitWidth = 507
     object BtnGravar: TBitBtn
       Left = 219
       Top = 7

@@ -36,11 +36,11 @@ type
     { Private declarations }
   public
     sSQL: string;
-    operacao: integer;
+    iOperacao: integer;
     FForm: TForm;
 
-    procedure carregaDados; dynamic; abstract;
-    procedure mostraTodos; dynamic;
+    procedure CarregaDados; dynamic; abstract;
+    procedure MostraTodos; dynamic;
   end;
 
 var
@@ -83,19 +83,16 @@ end;
 
 procedure TfrmConsultas.FormShow(Sender: TObject);
 begin
-  mostraTodos;
+  MostraTodos;
 end;
 
 procedure TfrmConsultas.mostraTodos;
 begin
-  with qryDados, SQL do
-    begin
-      Close;
-      Clear;
-      Add(sSQL);
-      Open;
-    end;
-
+  qryDados.Close;
+  qryDados.SQL.Clear;
+  qryDados.SQL.Add(sSQL);
+  qryDados.Open;
+  
   cdsDados.Close;
   cdsDados.Open;
   cdsDados.Refresh;

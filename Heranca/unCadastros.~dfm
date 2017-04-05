@@ -4,8 +4,8 @@ object frmCadastros: TfrmCadastros
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'CADASTROS'
-  ClientHeight = 436
-  ClientWidth = 507
+  ClientHeight = 540
+  ClientWidth = 743
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -23,66 +23,59 @@ object frmCadastros: TfrmCadastros
   object PnTitulo: TPanel
     Left = 0
     Top = 0
-    Width = 507
+    Width = 743
     Height = 40
     Align = alTop
     TabOrder = 0
-    object lblTitulo: TLabel
-      Left = 137
-      Top = 7
-      Width = 243
-      Height = 24
-      Caption = 'INCLUS'#195'O/ALTERA'#199#195'O'
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -19
-      Font.Name = 'MS Reference Sans Serif'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
   end
   object PnDados: TPanel
     Left = 0
     Top = 40
-    Width = 507
-    Height = 345
+    Width = 743
+    Height = 449
     Align = alTop
     Color = clMoneyGreen
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
     TabOrder = 1
   end
   object PnAcoes: TPanel
     Left = 0
-    Top = 385
-    Width = 507
+    Top = 489
+    Width = 743
     Height = 49
     Align = alTop
     TabOrder = 2
     object BtnGravar: TBitBtn
-      Left = 163
-      Top = 4
-      Width = 98
-      Height = 29
+      Left = 219
+      Top = 7
+      Width = 150
+      Height = 35
       Caption = 'GRAVAR - F5'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -12
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
+      Font.Height = -17
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 0
       OnClick = BtnGravarClick
     end
     object BtnCancelar: TBitBtn
-      Left = 267
-      Top = 4
-      Width = 98
-      Height = 29
+      Left = 374
+      Top = 7
+      Width = 150
+      Height = 35
       Caption = 'CANCELAR - ESC'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -12
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
+      Font.Height = -17
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 1
       OnClick = BtnCancelarClick

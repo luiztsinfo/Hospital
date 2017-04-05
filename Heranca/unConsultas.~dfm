@@ -1,6 +1,6 @@
 object frmConsultas: TfrmConsultas
-  Left = 0
-  Top = 0
+  Left = 516
+  Top = 244
   BorderIcons = [biSystemMenu, biMaximize]
   BorderStyle = bsSingle
   Caption = 'frmConsultas'
@@ -79,7 +79,7 @@ object frmConsultas: TfrmConsultas
       Left = 186
       Top = 23
       Width = 283
-      Height = 31
+      Height = 26
       CharCase = ecUpperCase
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
