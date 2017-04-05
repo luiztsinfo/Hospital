@@ -1,0 +1,22 @@
+program Hospital;
+
+uses
+  Vcl.Forms,
+  unPrincipal in 'unPrincipal.pas' {frmPrincipal},
+  unDM in 'unDM.pas' {DM: TDataModule},
+  unBusca in 'Heranca\unBusca.pas' {frmBusca},
+  unCadastros in 'Heranca\unCadastros.pas' {frmCadastros},
+  unConstTelas in 'Heranca\unConstTelas.pas',
+  unConsultas in 'Heranca\unConsultas.pas' {frmConsultas},
+  unFuncoes in 'Heranca\unFuncoes.pas',
+  unPacientes in 'Formularios\unPacientes.pas' {frmPessoas};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TfrmPrincipal, frmPrincipal);
+  Application.CreateForm(TDM, DM);
+  Application.Run;
+end.

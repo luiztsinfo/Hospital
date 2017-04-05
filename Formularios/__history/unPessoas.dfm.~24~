@@ -1,0 +1,286 @@
+inherited frmPessoas: TfrmPessoas
+  Caption = 'PESSOAS'
+  ClientHeight = 652
+  ClientWidth = 1095
+  Font.Height = -20
+  ExplicitWidth = 1101
+  ExplicitHeight = 687
+  PixelsPerInch = 96
+  TextHeight = 25
+  inherited PnTitulo: TPanel
+    Width = 1095
+    Height = 79
+    Margins.Left = 6
+    Margins.Top = 6
+    Margins.Right = 6
+    Margins.Bottom = 6
+    ExplicitWidth = 906
+    ExplicitHeight = 79
+    inherited lblTitulo: TLabel
+      Left = 305
+      Top = 14
+      Width = 488
+      Height = 46
+      Margins.Left = 6
+      Margins.Top = 6
+      Margins.Right = 6
+      Margins.Bottom = 6
+      Caption = 'CONSULTA DE PESSOAS'
+      Font.Height = -38
+      ExplicitLeft = 305
+      ExplicitTop = 14
+      ExplicitWidth = 488
+      ExplicitHeight = 46
+    end
+  end
+  inherited PnConsulta: TPanel
+    Top = 79
+    Width = 1095
+    Height = 129
+    Margins.Left = 6
+    Margins.Top = 6
+    Margins.Right = 6
+    Margins.Bottom = 6
+    ExplicitTop = 79
+    ExplicitWidth = 906
+    ExplicitHeight = 129
+    inherited Label1: TLabel
+      Left = 14
+      Top = 14
+      Width = 205
+      Height = 25
+      Margins.Left = 6
+      Margins.Top = 6
+      Margins.Right = 6
+      Margins.Bottom = 6
+      Font.Height = -21
+      ExplicitLeft = 14
+      ExplicitTop = 14
+      ExplicitWidth = 205
+      ExplicitHeight = 25
+    end
+    inherited Label2: TLabel
+      Left = 828
+      Top = 69
+      Width = 47
+      Height = 29
+      Margins.Left = 6
+      Margins.Top = 6
+      Margins.Right = 6
+      Margins.Bottom = 6
+      Font.Height = -24
+      ExplicitLeft = 828
+      ExplicitTop = 69
+      ExplicitWidth = 47
+      ExplicitHeight = 29
+    end
+    inherited edtConsulta: TEdit
+      Left = 338
+      Top = 66
+      Width = 487
+      Height = 31
+      Margins.Left = 6
+      Margins.Top = 6
+      Margins.Right = 6
+      Margins.Bottom = 6
+      OnKeyPress = edtConsultaKeyPress
+      ExplicitLeft = 338
+      ExplicitTop = 66
+      ExplicitWidth = 487
+      ExplicitHeight = 31
+    end
+    object RdBtnRG: TRadioButton
+      Left = 126
+      Top = 102
+      Width = 113
+      Height = 16
+      Caption = 'RG'
+      TabOrder = 1
+    end
+    object RdBtnCPF: TRadioButton
+      Left = 126
+      Top = 79
+      Width = 112
+      Height = 17
+      Caption = 'CPF'
+      TabOrder = 2
+    end
+    object RdBtnCartaoSUS: TRadioButton
+      Left = 125
+      Top = 56
+      Width = 134
+      Height = 17
+      Caption = 'Cart'#227'o SUS'
+      TabOrder = 3
+    end
+    object RdBtnCodigo: TRadioButton
+      Left = 24
+      Top = 56
+      Width = 89
+      Height = 17
+      Caption = 'C'#243'digo'
+      TabOrder = 4
+    end
+    object RdBtnNome: TRadioButton
+      Left = 24
+      Top = 79
+      Width = 89
+      Height = 17
+      Caption = 'Nome'
+      Checked = True
+      TabOrder = 5
+      TabStop = True
+    end
+  end
+  inherited PnDados: TPanel
+    Top = 208
+    Width = 1095
+    Height = 366
+    Margins.Left = 6
+    Margins.Top = 6
+    Margins.Right = 6
+    Margins.Bottom = 6
+    Align = alClient
+    ExplicitTop = 208
+    ExplicitWidth = 1095
+    ExplicitHeight = 361
+    object GrdPessoas: TDBGrid
+      Left = 1
+      Top = 1
+      Width = 1093
+      Height = 364
+      Align = alClient
+      TabOrder = 0
+      TitleFont.Charset = DEFAULT_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -20
+      TitleFont.Name = 'MS Sans Serif'
+      TitleFont.Style = []
+      OnDrawColumnCell = GrdPessoasDrawColumnCell
+      OnTitleClick = GrdPessoasTitleClick
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'CODIGO'
+          Title.Caption = 'C'#243'digo'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'NOME'
+          Title.Caption = 'Nome'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'NASCIMENTO'
+          Title.Caption = 'Nascimento'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'CARTAOSUS'
+          Title.Caption = 'SUS'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'CPF'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'RG'
+          Visible = True
+        end>
+    end
+  end
+  inherited PnAcoes: TPanel
+    Top = 574
+    Width = 1095
+    Height = 78
+    Margins.Left = 6
+    Margins.Top = 6
+    Margins.Right = 6
+    Margins.Bottom = 6
+    Align = alBottom
+    ExplicitLeft = -11
+    ExplicitTop = 581
+    ExplicitWidth = 1095
+    ExplicitHeight = 78
+    inherited BtnIncluir: TBitBtn
+      Left = 10
+      Top = 23
+      Width = 171
+      Height = 36
+      Margins.Left = 6
+      Margins.Top = 6
+      Margins.Right = 6
+      Margins.Bottom = 6
+      Font.Height = -20
+      ExplicitLeft = 10
+      ExplicitTop = 23
+      ExplicitWidth = 171
+      ExplicitHeight = 36
+    end
+    inherited BtnAlterar: TBitBtn
+      Left = 198
+      Top = 23
+      Width = 171
+      Height = 36
+      Margins.Left = 6
+      Margins.Top = 6
+      Margins.Right = 6
+      Margins.Bottom = 6
+      Font.Height = -23
+      ExplicitLeft = 198
+      ExplicitTop = 23
+      ExplicitWidth = 171
+      ExplicitHeight = 36
+    end
+    inherited BtnExcluir: TBitBtn
+      Left = 383
+      Top = 23
+      Width = 172
+      Height = 36
+      Margins.Left = 6
+      Margins.Top = 6
+      Margins.Right = 6
+      Margins.Bottom = 6
+      Font.Height = -23
+      ExplicitLeft = 383
+      ExplicitTop = 23
+      ExplicitWidth = 172
+      ExplicitHeight = 36
+    end
+    inherited BtnSair: TBitBtn
+      Left = 748
+      Top = 23
+      Width = 141
+      Height = 36
+      Margins.Left = 6
+      Margins.Top = 6
+      Margins.Right = 6
+      Margins.Bottom = 6
+      Font.Height = -23
+      ExplicitLeft = 748
+      ExplicitTop = 23
+      ExplicitWidth = 141
+      ExplicitHeight = 36
+    end
+    inherited BtnRelatorios: TBitBtn
+      Left = 568
+      Top = 23
+      Width = 157
+      Height = 36
+      Margins.Left = 6
+      Margins.Top = 6
+      Margins.Right = 6
+      Margins.Bottom = 6
+      ExplicitLeft = 568
+      ExplicitTop = 23
+      ExplicitWidth = 157
+      ExplicitHeight = 36
+    end
+  end
+end

@@ -1,0 +1,26 @@
+unit unManPacientes;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, unCadastros, Data.FMTBcd, Data.SqlExpr,
+  Data.DB, Datasnap.Provider, Datasnap.DBClient, Vcl.StdCtrls, Vcl.Buttons,
+  Vcl.ExtCtrls;
+
+type
+  TfrmManPacientes = class(TfrmCadastros)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmManPacientes: TfrmManPacientes;
+
+implementation
+
+{$R *.dfm}
+
+end.

@@ -1,0 +1,69 @@
+unit unPessoas;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, unConsultas, Data.FMTBcd, Vcl.StdCtrls,
+  Datasnap.Provider, Datasnap.DBClient, Data.DB, Data.SqlExpr, Vcl.Buttons,
+  Vcl.ExtCtrls, Vcl.Grids, Vcl.DBGrids;
+
+type
+  TfrmPessoas = class(TfrmConsultas)
+    RdBtnRG: TRadioButton;
+    RdBtnCPF: TRadioButton;
+    RdBtnCartaoSUS: TRadioButton;
+    RdBtnCodigo: TRadioButton;
+    RdBtnNome: TRadioButton;
+    GrdPessoas: TDBGrid;
+    procedure FormShow(Sender: TObject);
+    procedure GrdPessoasDrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+  private
+    procedure carregaDados; override;
+  public
+    { Public declarations }
+  end;
+
+var
+  frmPessoas: TfrmPessoas;
+
+implementation
+
+{$R *.dfm}
+
+uses unPrincipal;
+
+{ TfrmPessoas }
+
+procedure TfrmPessoas.carregaDados;
+begin
+  inherited;
+
+end;
+
+procedure TfrmPessoas.FormShow(Sender: TObject);
+begin
+  frmPrincipal.sCampo := 'CODIGO';
+
+  sSQL := 'SELECT * FROM pessoa ORDER BY '+frmPrincipal.sCampo;
+
+  inherited;
+
+end;
+
+procedure TfrmPessoas.GrdPessoasDrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
+begin
+  inherited;
+ if State = [] then
+  begin
+    if cdsDados.RecNo mod 2 = 1 then
+      GrdPessoas.Canvas.Brush.Color := clMoneyGreen
+    else
+      GrdPessoas.Canvas.Brush.Color := clWhite;
+  end;
+  GrdPessoas.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+end;
+
+end.

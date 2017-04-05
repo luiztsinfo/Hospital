@@ -1,0 +1,39 @@
+unit unDM;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, Data.FMTBcd, Data.DBXFirebird, Data.DB,
+  Data.SqlExpr, Datasnap.Provider, Datasnap.DBClient, IniFiles;
+
+type
+  TDM = class(TDataModule)
+    dsGeral: TDataSource;
+    cdsGeral: TClientDataSet;
+    dspGeral: TDataSetProvider;
+    qryGeral: TSQLQuery;
+    Con: TSQLConnection;
+    procedure DataModuleCreate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  DM: TDM;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+procedure TDM.DataModuleCreate(Sender: TObject);
+var
+  Arquivo: TIniFile;
+begin
+
+end;
+
+end.

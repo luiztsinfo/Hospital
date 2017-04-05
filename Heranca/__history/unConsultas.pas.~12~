@@ -1,0 +1,47 @@
+unit unConsultas;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Buttons;
+
+type
+  TfrmConsultas = class(TForm)
+    PnTitulo: TPanel;
+    PnConsulta: TPanel;
+    PnDados: TPanel;
+    PnAcoes: TPanel;
+    Label1: TLabel;
+    Bevel1: TBevel;
+    edtConsulta: TEdit;
+    Label2: TLabel;
+    BtnIncluir: TBitBtn;
+    BtnAlterar: TBitBtn;
+    BtnExcluir: TBitBtn;
+    BtnSair: TBitBtn;
+    procedure BtnIncluirClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    sSQL: string;
+    operacao: integer;
+    FForm: TForm;
+
+    procedure carregaDados; dynamic; abstract;
+    procedure mostraTodos; dynamic;
+  end;
+
+var
+  frmConsultas: TfrmConsultas;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmConsultas.BtnIncluirClick(Sender: TObject);
+begin
+        ShowMessage('teste');
+end;
+
+end.

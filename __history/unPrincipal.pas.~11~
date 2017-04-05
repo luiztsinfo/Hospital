@@ -1,0 +1,57 @@
+unit unPrincipal;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, unFuncoes;
+
+type
+  TfrmPrincipal = class(TForm)
+    MnMnuPrincipal: TMainMenu;
+    Cadastros1: TMenuItem;
+    Pessoas1: TMenuItem;
+    este1: TMenuItem;
+    procedure este1Click(Sender: TObject);
+  private
+
+    loFuncoes: TFuncoes;
+
+  public
+
+    { RESOLUCAO }
+    oldwidth:integer;
+    OldHeight :integer;
+    Auxwidth:integer;
+    Auxheight:integer ;
+    {                  }
+
+    iModoSuporte: integer; // 1 = em suporte
+    iCaixaUsado: integer;
+    bChamarEquipamento: boolean;
+    iOperacao: integer;
+    iCodUsuario: integer;
+    sCampo: string;
+  end;
+
+var
+  frmPrincipal: TfrmPrincipal;
+
+implementation
+
+{$R *.dfm}
+
+uses unCadastros, unTeste, unConsultas;
+
+procedure TfrmPrincipal.este1Click(Sender: TObject);
+begin
+  try
+
+    frmConsultas := TfrmConsultas.Create(self);
+    frmTeste.ShowModal;
+  finally
+    FreeAndNil(frmTeste);
+  end;
+end;
+
+end.

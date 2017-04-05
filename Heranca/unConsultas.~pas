@@ -1,0 +1,104 @@
+unit unConsultas;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms, Dialogs, ExtCtrls, StdCtrls, Buttons,
+
+  Provider, DBClient, DB, SqlExpr,
+  FMTBcd;
+
+type
+  TfrmConsultas = class(TForm)
+    PnTitulo: TPanel;
+    PnConsulta: TPanel;
+    PnDados: TPanel;
+    PnAcoes: TPanel;
+    Label1: TLabel;
+    Bevel1: TBevel;
+    edtConsulta: TEdit;
+    Label2: TLabel;
+    BtnIncluir: TBitBtn;
+    BtnAlterar: TBitBtn;
+    BtnExcluir: TBitBtn;
+    BtnSair: TBitBtn;
+    qryDados: TSQLQuery;
+    dsDados: TDataSource;
+    cdsDados: TClientDataSet;
+    dspDados: TDataSetProvider;
+    procedure BtnIncluirClick(Sender: TObject);
+    procedure BtnSairClick(Sender: TObject);
+    procedure BtnAlterarClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+  private
+    { Private declarations }
+  public
+    sSQL: string;
+    operacao: integer;
+    FForm: TForm;
+
+    procedure carregaDados; dynamic; abstract;
+    procedure mostraTodos; dynamic;
+  end;
+
+var
+  frmConsultas: TfrmConsultas;
+
+implementation
+
+{$R *.dfm}
+
+uses unPrincipal, unDM;
+
+procedure TfrmConsultas.BtnAlterarClick(Sender: TObject);
+begin
+  frmPrincipal.iOperacao := 2;
+
+  carregaDados;
+end;
+
+procedure TfrmConsultas.BtnIncluirClick(Sender: TObject);
+begin
+  frmPrincipal.iOperacao := 1;
+
+  mostraTodos;
+end;
+
+procedure TfrmConsultas.BtnSairClick(Sender: TObject);
+begin
+  Close;
+end;
+
+procedure TfrmConsultas.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if key = vk_escape then
+    Self.Close;
+
+  if key = VK_F6 then
+    edtConsulta.SetFocus;
+end;
+
+procedure TfrmConsultas.FormShow(Sender: TObject);
+begin
+  mostraTodos;
+end;
+
+procedure TfrmConsultas.mostraTodos;
+begin
+  with qryDados, SQL do
+    begin
+      Close;
+      Clear;
+      Add(sSQL);
+      Open;
+    end;
+
+  cdsDados.Close;
+  cdsDados.Open;
+  cdsDados.Refresh;
+end;
+
+end.

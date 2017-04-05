@@ -1,0 +1,18 @@
+inherited frmManPacientes: TfrmManPacientes
+  Caption = 'Inclus'#227'o/Altera'#231#227'o Pacientes...'
+  ClientHeight = 542
+  ClientWidth = 753
+  ExplicitWidth = 759
+  ExplicitHeight = 577
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited PnTitulo: TPanel
+    Width = 753
+  end
+  inherited PnDados: TPanel
+    Width = 753
+  end
+  inherited PnAcoes: TPanel
+    Width = 753
+  end
+end

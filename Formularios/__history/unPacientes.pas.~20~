@@ -1,0 +1,136 @@
+unit unPacientes;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, unConsultas, Data.FMTBcd,
+  Datasnap.Provider, Datasnap.DBClient, Data.DB, Data.SqlExpr, Vcl.StdCtrls,
+  Vcl.Buttons, Vcl.ExtCtrls, Vcl.Grids, Vcl.DBGrids, unFuncoes;
+
+type
+  TfrmPacientes = class(TfrmConsultas)
+    GrdPacientes: TDBGrid;
+    RdBtnCodigo: TRadioButton;
+    RdBtnNome: TRadioButton;
+    RdBtnCartaoSUS: TRadioButton;
+    RdBtnCPF: TRadioButton;
+    RdBtnRG: TRadioButton;
+    procedure FormShow(Sender: TObject);
+    procedure GrdPacientesDrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure edtConsultaKeyPress(Sender: TObject; var Key: Char);
+    procedure GrdPacientesTitleClick(Column: TColumn);
+  private
+    loFuncoes: TFuncoes;
+    procedure carregaDados; override;
+  public
+    telachamando: integer;
+  end;
+
+var
+  frmPacientes: TfrmPacientes;
+
+implementation
+
+{$R *.dfm}
+
+uses unPrincipal;
+
+procedure TfrmPacientes.carregaDados;
+begin
+  inherited;
+
+end;
+
+procedure TfrmPacientes.edtConsultaKeyPress(Sender: TObject; var Key: Char);
+begin
+  inherited;
+  if key = #13 then
+    begin
+      if edtConsulta.Text <> trim('') then
+        begin
+          with qryDados, SQL do
+            begin
+              Close;
+              Clear;
+
+              // CODIGO
+              if RdBtnCodigo.Checked then
+                begin
+                  Add('SELECT * FROM pessoa WHERE codigo = :cod AND categoria IS NULL OR 0');
+                  ParamByName('cod').AsInteger := StrToInt(edtConsulta.Text);
+                end;
+
+              // NOME
+              if RdBtnNome.Checked then
+                begin
+                  Add('SELECT * FROM pessoa WHERE nome LIKE :nome AND categoria IS NULL OR 0');
+                  ParamByName('nome').AsString := '%' + edtConsulta.Text + '%';
+                end;
+
+              // SUS
+              if RdBtnCartaoSUS.Checked then
+                begin
+                  Add('SELECT * FROM pessoa WHERE cartaosus LIKE :sus AND categoria IS NULL OR 0');
+                  ParamByName('sus').AsString := '%' + edtConsulta.Text + '%';
+                end;
+
+              // CPF
+              if RdBtnCPF.Checked then
+                begin
+                  Add('SELECT * FROM pessoa WHERE cpf LIKE :cpf AND categoria IS NULL OR 0');
+                  ParamByName('cpf').AsString := '%' + edtConsulta.Text + '%';
+                end;
+
+              // RG
+              if RdBtnRG.Checked then
+                begin
+                  Add('SELECT * FROM pessoa WHERE rg LIKE :rg AND categoria IS NULL OR 0');
+                  ParamByName('rg').AsString := '%' + edtConsulta.Text + '%';
+                end;
+
+                Add('ORDER BY '+ frmPrincipal.sCampo);
+              Open;
+            end;
+        end;
+      cdsDados.Open;
+      cdsDados.Refresh;
+
+      GrdPacientes.SetFocus;
+    end;
+end;
+
+procedure TfrmPacientes.FormShow(Sender: TObject);
+begin
+  frmPrincipal.sCampo := 'CODIGO';
+
+  sSQL := 'SELECT * FROM pessoa WHERE categoria IS NULL OR categoria = 0 ORDER BY '+frmPrincipal.sCampo;
+
+  inherited;
+end;
+
+procedure TfrmPacientes.GrdPacientesDrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
+begin
+  inherited;
+ if State = [] then
+  begin
+    if cdsDados.RecNo mod 2 = 1 then
+      GrdPacientes.Canvas.Brush.Color := clMoneyGreen
+    else
+      GrdPacientes.Canvas.Brush.Color := clWhite;
+  end;
+  GrdPacientes.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+end;
+
+procedure TfrmPacientes.GrdPacientesTitleClick(Column: TColumn);
+begin
+  inherited;
+  frmPrincipal.sCampo := Column.FieldName; // CAMPO RECEBE O NOME DA COLUNA CLICADA,
+
+  sSQL := 'SELECT * FROM pessoa WHERE categoria IS NULL OR 0 ORDER BY '+frmPrincipal.sCampo;
+  mostraTodos;
+end;
+
+end.

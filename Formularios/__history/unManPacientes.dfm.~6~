@@ -1,0 +1,228 @@
+inherited frmManPacientes: TfrmManPacientes
+  Caption = 'Inclus'#227'o/Altera'#231#227'o Pacientes...'
+  ClientHeight = 542
+  ClientWidth = 753
+  ExplicitWidth = 759
+  ExplicitHeight = 577
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited PnTitulo: TPanel
+    Width = 753
+  end
+  inherited PnDados: TPanel
+    Width = 753
+    object lblCodigo: TLabel
+      Left = 8
+      Top = 6
+      Width = 39
+      Height = 16
+      Caption = 'C'#243'digo'
+    end
+    object Label2: TLabel
+      Left = 592
+      Top = 32
+      Width = 37
+      Height = 16
+      Caption = 'Label2'
+    end
+    object Label3: TLabel
+      Left = 600
+      Top = 48
+      Width = 37
+      Height = 16
+      Caption = 'Label3'
+    end
+    object Label4: TLabel
+      Left = 608
+      Top = 64
+      Width = 37
+      Height = 16
+      Caption = 'Label4'
+    end
+    object Label5: TLabel
+      Left = 608
+      Top = 80
+      Width = 37
+      Height = 16
+      Caption = 'Label5'
+    end
+    object Label6: TLabel
+      Left = 608
+      Top = 96
+      Width = 37
+      Height = 16
+      Caption = 'Label6'
+    end
+    object Label7: TLabel
+      Left = 616
+      Top = 112
+      Width = 37
+      Height = 16
+      Caption = 'Label7'
+    end
+    object Label8: TLabel
+      Left = 624
+      Top = 136
+      Width = 37
+      Height = 16
+      Caption = 'Label8'
+    end
+    object Label9: TLabel
+      Left = 632
+      Top = 160
+      Width = 37
+      Height = 16
+      Caption = 'Label9'
+    end
+    object Label10: TLabel
+      Left = 632
+      Top = 176
+      Width = 44
+      Height = 16
+      Caption = 'Label10'
+    end
+    object Label11: TLabel
+      Left = 632
+      Top = 192
+      Width = 44
+      Height = 16
+      Caption = 'Label11'
+    end
+    object Label12: TLabel
+      Left = 640
+      Top = 216
+      Width = 44
+      Height = 16
+      Caption = 'Label12'
+    end
+    object Label13: TLabel
+      Left = 648
+      Top = 232
+      Width = 44
+      Height = 16
+      Caption = 'Label13'
+    end
+    object Label14: TLabel
+      Left = 640
+      Top = 248
+      Width = 44
+      Height = 16
+      Caption = 'Label14'
+    end
+    object Label15: TLabel
+      Left = 632
+      Top = 264
+      Width = 44
+      Height = 16
+      Caption = 'Label15'
+    end
+    object Label16: TLabel
+      Left = 624
+      Top = 288
+      Width = 44
+      Height = 16
+      Caption = 'Label16'
+    end
+    object Label17: TLabel
+      Left = 624
+      Top = 304
+      Width = 44
+      Height = 16
+      Caption = 'Label17'
+    end
+    object Label18: TLabel
+      Left = 616
+      Top = 320
+      Width = 44
+      Height = 16
+      Caption = 'Label18'
+    end
+    object Label19: TLabel
+      Left = 624
+      Top = 336
+      Width = 44
+      Height = 16
+      Caption = 'Label19'
+    end
+    object Label20: TLabel
+      Left = 632
+      Top = 360
+      Width = 44
+      Height = 16
+      Caption = 'Label20'
+    end
+    object Label21: TLabel
+      Left = 632
+      Top = 376
+      Width = 44
+      Height = 16
+      Caption = 'Label21'
+    end
+    object Label22: TLabel
+      Left = 632
+      Top = 400
+      Width = 44
+      Height = 16
+      Caption = 'Label22'
+    end
+    object Label23: TLabel
+      Left = 640
+      Top = 416
+      Width = 44
+      Height = 16
+      Caption = 'Label23'
+    end
+    object Label24: TLabel
+      Left = 688
+      Top = 352
+      Width = 44
+      Height = 16
+      Caption = 'Label24'
+    end
+    object Label25: TLabel
+      Left = 688
+      Top = 368
+      Width = 44
+      Height = 16
+      Caption = 'Label25'
+    end
+    object Label26: TLabel
+      Left = 696
+      Top = 384
+      Width = 44
+      Height = 16
+      Caption = 'Label26'
+    end
+  end
+  inherited PnAcoes: TPanel
+    Width = 753
+  end
+  inherited cdsAux: TClientDataSet
+    Left = 432
+    Top = 209
+  end
+  inherited cdsPadrao: TClientDataSet
+    Left = 432
+  end
+  inherited dspAux: TDataSetProvider
+    Left = 496
+    Top = 209
+  end
+  inherited dspPadrao: TDataSetProvider
+    Left = 496
+  end
+  inherited dsAux: TDataSource
+    Left = 560
+    Top = 209
+  end
+  inherited dsPadrao: TDataSource
+    Left = 560
+  end
+  inherited qryAux: TSQLQuery
+    Left = 368
+    Top = 208
+  end
+  inherited qryPadrao: TSQLQuery
+    Left = 368
+  end
+end

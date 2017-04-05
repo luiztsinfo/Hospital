@@ -1,0 +1,28 @@
+object frmPrincipal: TfrmPrincipal
+  Left = 0
+  Top = 0
+  Caption = 'SISTEMA DE GERENCIAMENTO HOSPITALAR - SGH'
+  ClientHeight = 291
+  ClientWidth = 633
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -13
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  Menu = MnMnuPrincipal
+  OldCreateOrder = False
+  PixelsPerInch = 120
+  TextHeight = 16
+  object MnMnuPrincipal: TMainMenu
+    Left = 176
+    Top = 152
+    object Cadastros1: TMenuItem
+      Caption = 'Cadastros'
+      object Pessoas1: TMenuItem
+        Caption = 'Pessoas...'
+        OnClick = Pessoas1Click
+      end
+    end
+  end
+end

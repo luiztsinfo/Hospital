@@ -1,0 +1,60 @@
+unit unDM;
+
+interface
+
+uses
+  SysUtils, Classes, FMTBcd, DB,
+  SqlExpr, Provider, DBClient, IniFiles, Forms, Dialogs,
+  DBXpress;
+
+type
+  TDM = class(TDataModule)
+    dsGeral: TDataSource;
+    cdsGeral: TClientDataSet;
+    dspGeral: TDataSetProvider;
+    qryGeral: TSQLQuery;
+    Con: TSQLConnection;
+    procedure DataModuleCreate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  DM: TDM;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+procedure TDM.DataModuleCreate(Sender: TObject);
+var
+  Ini: TIniFile;
+begin
+  {  Ini := TIniFile.Create(ExtractFilePath(Application.ExeName) + 'config.ini');
+    try
+        Con.Connected     := false;
+        Con.LoginPrompt   := false;
+        //Con.DriverName    := Ini.ReadString('Configuracoes', 'Drivername', '');
+        Con.GetDriverFunc := Ini.ReadString('Configuracoes', 'GetDriveFunc', '');
+        Con.LibraryName   := Ini.ReadString('Configuracoes', 'LibraryName', '');
+        Con.VendorLib     := Ini.ReadString('Configuracoes', 'VendorLib', '');
+        Con.Params.Clear;
+        Con.ParamsLoaded  := True;
+        Con.Params.Add('servercharset='+ Ini.ReadString('Configuracoes', 'Charset', ''));
+        Con.Params.Add('hostname='+      Ini.ReadString('Configuracoes', 'Hostname', ''));
+        Con.Params.Add('user_name='+     Ini.ReadString('Configuracoes', 'User_name', ''));
+        Con.Params.Add('password='+      Ini.ReadString('Configuracoes', 'Password', ''));
+        Con.Params.Add('port='+          IntToStr(Ini.ReadInteger('Configuracoes', 'Port', 0)));
+        //Con.Params.Add('Database='+      Ini.ReadString('Configuracoes', 'Database', ''));
+        Con.Connected := true;
+    except
+         on E:Exception do
+         MessageDlg('Erro ao conectar!'#13'Erro: ' + e.Message, mtError, [mbOK], 0);
+    end;  }
+end;
+
+end.

@@ -1,0 +1,131 @@
+object frmCadastros: TfrmCadastros
+  Left = 441
+  Top = 134
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'CADASTROS'
+  ClientHeight = 540
+  ClientWidth = 743
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -10
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  KeyPreview = True
+  OldCreateOrder = False
+  Position = poScreenCenter
+  OnKeyDown = FormKeyDown
+  OnKeyPress = FormKeyPress
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object PnTitulo: TPanel
+    Left = 0
+    Top = 0
+    Width = 743
+    Height = 40
+    Align = alTop
+    TabOrder = 0
+    ExplicitWidth = 507
+  end
+  object PnDados: TPanel
+    Left = 0
+    Top = 40
+    Width = 743
+    Height = 449
+    Align = alTop
+    Color = clMoneyGreen
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 1
+  end
+  object PnAcoes: TPanel
+    Left = 0
+    Top = 489
+    Width = 743
+    Height = 49
+    Align = alTop
+    TabOrder = 2
+    ExplicitTop = 385
+    ExplicitWidth = 507
+    object BtnGravar: TBitBtn
+      Left = 219
+      Top = 7
+      Width = 150
+      Height = 35
+      Caption = 'GRAVAR - F5'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -17
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 0
+      OnClick = BtnGravarClick
+    end
+    object BtnCancelar: TBitBtn
+      Left = 374
+      Top = 7
+      Width = 150
+      Height = 35
+      Caption = 'CANCELAR - ESC'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -17
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 1
+      OnClick = BtnCancelarClick
+    end
+  end
+  object cdsAux: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 416
+    Top = 225
+  end
+  object cdsPadrao: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'dspPadrao'
+    Left = 416
+    Top = 257
+  end
+  object dspAux: TDataSetProvider
+    Left = 448
+    Top = 225
+  end
+  object dspPadrao: TDataSetProvider
+    DataSet = qryPadrao
+    Left = 448
+    Top = 257
+  end
+  object dsAux: TDataSource
+    Left = 480
+    Top = 225
+  end
+  object dsPadrao: TDataSource
+    DataSet = cdsPadrao
+    Left = 480
+    Top = 257
+  end
+  object qryAux: TSQLQuery
+    Params = <>
+    Left = 384
+    Top = 225
+  end
+  object qryPadrao: TSQLQuery
+    DataSource = dsPadrao
+    MaxBlobSize = -1
+    Params = <>
+    SQLConnection = DM.Con
+    Left = 384
+    Top = 257
+  end
+end
